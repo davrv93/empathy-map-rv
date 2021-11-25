@@ -1,0 +1,81 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">"{{title}}" Add item </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Write here</label>
+        <div class="input-group">
+          <textarea class="form-control" aria-label="With textarea" [(ngModel)]="item" name="item"></textarea>
+
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Save</button>
+  </div>
+</ng-template>
+<div class="container">
+  <div class="center "
+    style="background-position:center; background-repeat: no-repeat;
+     background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),url('https://openmoji.org/data/color/svg/1F467.svg');   ">
+    <h1 style="text-align: center;">Empathy map</h1>
+
+    <div cdkDropListGroup>
+      <div class="row">
+        <div class="example-container">
+          <h2>What do they hear? <button type="button" class="btn btn-lg btn-outline-primary"
+              (click)="open(content,'Hear',1)">
+              Add</button>
+          </h2>
+
+          <div cdkDropList [cdkDropListData]="hear" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of hear" cdkDrag>{{item}} <button
+                (click)="remove(item,hear)">X</button></div>
+          </div>
+        </div>
+
+        <div class="example-container">
+          <h2>What do they feel? <button type="button" class="btn btn-lg btn-outline-primary"
+              (click)="open(content,'Feel',2)"> Add</button></h2>
+
+          <div cdkDropList [cdkDropListData]="feel" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of feel" cdkDrag>{{item}} <button
+                (click)="remove(item,feel)">X</button></div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="example-container">
+          <h2>What do they see? <button type="button" class="btn btn-lg btn-outline-primary"
+              (click)="open(content,'See',3)"> Add</button></h2>
+
+          <div cdkDropList [cdkDropListData]="see" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of see" cdkDrag>{{item}} <button
+                (click)="remove(item,see)">X</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="example-container">
+          <h2>What do they say and do? <button type="button" class="btn btn-lg btn-outline-primary"
+              (click)="open(content,'Say and Do',4)"> Add</button></h2>
+
+          <div cdkDropList [cdkDropListData]="say" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of say" cdkDrag>{{item}} <button
+                (click)="remove(item,say)">X</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<br>
